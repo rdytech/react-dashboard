@@ -10,7 +10,7 @@
     "es6"
   ],
   "keywords": [
-    "dashboard"
+    "react-dashboard"
   ],
   "license": "MIT",
   "private": true,
@@ -19,7 +19,18 @@
     "node_modules",
     "bower_components",
     "../",
+    "src",
     "test",
     "tests"
-  ]
+  ],
+  "main": [
+    "react-dashboard.js"
+  ],
+  "dependencies": {
+    "react": "~0.12.2",
+    "jquery": "~2.1.3"
+  },
+  "devDependencies": {
+    "jest": "~0.2.1"
+  }
 }
