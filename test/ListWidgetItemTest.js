@@ -1,18 +1,18 @@
 /** @jsx React.DOM */
 
-jest.dontMock('../src/WidgetListItem');
+jest.dontMock('../src/widgets/ListWidgetItem');
 
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 
-var WidgetListItem = require('../src/WidgetListItem');
+var ListWidgetItem = require('../src/widgets/ListWidgetItem');
 
 
-describe('WidgetListItem', function () {
+describe('ListWidgetItem', function () {
     var instance;
 
     beforeEach(function () {
-        instance = TestUtils.renderIntoDocument(<WidgetListItem title='Walk like an' url='http://example.com' tooltip='Awesome Sauce' />);
+        instance = TestUtils.renderIntoDocument(<ListWidgetItem title='Walk like an' url='http://example.com' tooltip='Awesome Sauce' />);
     });
 
     it('sets the title', function () {

@@ -1,7 +1,7 @@
 var React = require('react');
 var $ = require('jquery');
 
-var WidgetNumber = React.createClass({
+var NumberWidget = React.createClass({
     getDefaultProps: function () {
         return {
             pollInterval: 15000
@@ -50,5 +50,5 @@ var WidgetNumber = React.createClass({
 });
 
 
-module.exports = WidgetNumber;
+module.exports = NumberWidget;
 

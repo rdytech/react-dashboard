@@ -1,10 +1,10 @@
 var React = require('react');
-var WidgetListItem = require('./WidgetListItem');
+var ListWidgetItem = require('./ListWidgetItem');
 
 
 var $ = require('jquery');
 
-var WidgetList = React.createClass({
+var ListWidget = React.createClass({
     getDefaultProps: function () {
         return {
             pollInterval: 15000
@@ -31,9 +31,9 @@ var WidgetList = React.createClass({
     },
     render: function () {
         var classes = "icon heading-icon " + this.props.widgetIcon;
-        var listItems = this.props.items.map(function (item) {
+        var listItems = this.state.data.items.map(function (item) {
             return (
-                <WidgetListItem title={item.name} url={item.url}  tooltip={item.tooltip}  />
+                <ListWidgetItem title={item.name} url={item.url} tooltip={item.tooltip}  />
             );
         });
 
@@ -55,4 +55,4 @@ var WidgetList = React.createClass({
 });
 
 
-module.exports = WidgetList;
+module.exports = ListWidget;

@@ -1,18 +1,18 @@
 var React = require('react');
-var WidgetList = require('./WidgetList');
-var WidgetNumber = require('./WidgetList');
+var ListWidget = require('./widgets/ListWidget');
+var NumberWidget = require('./widgets/NumberWidget');
 
 var JobReady = window.JobReady || {};
 JobReady.Dashboard = {
-    addWidgetNumber: function (widgetContainerId, title, url, icon, pollInterval) {
+    addNumberWidget: function (widgetContainerId, title, url, icon, pollInterval) {
       React.render(
-            <WidgetNumber title={title} url={url} widgetIcon={icon} pollInterval={pollInterval} />,
+            <NumberWidget title={title} url={url} widgetIcon={icon} pollInterval={pollInterval} />,
             document.getElementById(widgetContainerId));
     },
 
-    addWidget: function (widgetContainerId, title, url, icon, pollInterval) {
+    addListWidget: function (widgetContainerId, title, url, icon, pollInterval) {
         React.render(
-            <WidgetList title={title} url={url} widgetIcon={icon} pollInterval={pollInterval} />,
+            <ListWidget title={title} url={url} widgetIcon={icon} pollInterval={pollInterval} />,
             document.getElementById(widgetContainerId));
     }
 };

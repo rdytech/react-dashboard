@@ -27494,12 +27494,20 @@ module.exports = require('./lib/React');
 
 },{"./lib/React":30}],149:[function(require,module,exports){
 var React = require('react');
-var WidgetList = require('./WidgetList');
+var ListWidget = require('./widgets/ListWidget');
+var NumberWidget = require('./widgets/NumberWidget');
+
 var JobReady = window.JobReady || {};
 JobReady.Dashboard = {
-    addWidget: function (widgetContainerId, title, url, icon, pollInterval) {
+    addNumberWidget: function (widgetContainerId, title, url, icon, pollInterval) {
+      React.render(
+            React.createElement(NumberWidget, {title: title, url: url, widgetIcon: icon, pollInterval: pollInterval}),
+            document.getElementById(widgetContainerId));
+    },
+
+    addListWidget: function (widgetContainerId, title, url, icon, pollInterval) {
         React.render(
-            React.createElement(WidgetList, {title: title, url: url, widgetIcon: icon, pollInterval: pollInterval}),
+            React.createElement(ListWidget, {title: title, url: url, widgetIcon: icon, pollInterval: pollInterval}),
             document.getElementById(widgetContainerId));
     }
 };
@@ -27507,14 +27515,14 @@ JobReady.Dashboard = {
 window.JobReady = JobReady;
 
 
-},{"./WidgetList":150,"react":148}],150:[function(require,module,exports){
+},{"./widgets/ListWidget":150,"./widgets/NumberWidget":152,"react":148}],150:[function(require,module,exports){
 var React = require('react');
-var WidgetListItem = require('./WidgetListItem');
+var ListWidgetItem = require('./ListWidgetItem');
 
 
 var $ = require('jquery');
 
-var WidgetList = React.createClass({displayName: "WidgetList",
+var ListWidget = React.createClass({displayName: "ListWidget",
     getDefaultProps: function () {
         return {
             pollInterval: 15000
@@ -27541,9 +27549,9 @@ var WidgetList = React.createClass({displayName: "WidgetList",
     },
     render: function () {
         var classes = "icon heading-icon " + this.props.widgetIcon;
-        var listItems = this.props.items.map(function (item) {
+        var listItems = this.state.data.items.map(function (item) {
             return (
-                React.createElement(WidgetListItem, {title: item.name, url: item.url, tooltip: item.tooltip})
+                React.createElement(ListWidgetItem, {title: item.name, url: item.url, tooltip: item.tooltip})
             );
         });
 
@@ -27565,12 +27573,12 @@ var WidgetList = React.createClass({displayName: "WidgetList",
 });
 
 
-module.exports = WidgetList;
+module.exports = ListWidget;
 
 
-},{"./WidgetListItem":151,"jquery":2,"react":148}],151:[function(require,module,exports){
+},{"./ListWidgetItem":151,"jquery":2,"react":148}],151:[function(require,module,exports){
 var React = require('react');
-var WidgetListItem = React.createClass({displayName: "WidgetListItem",
+var ListWidgetItem = React.createClass({displayName: "ListWidgetItem",
     render: function () {
         return (React.createElement("a", {href: this.props.url, 
             className: "list-group-item tooltips", 
@@ -27579,7 +27587,64 @@ var WidgetListItem = React.createClass({displayName: "WidgetListItem",
             title: this.props.tooltip}, this.props.title));
     }
 });
-module.exports = WidgetListItem;
+module.exports = ListWidgetItem;
 
 
-},{"react":148}]},{},[149]);
+},{"react":148}],152:[function(require,module,exports){
+var React = require('react');
+var $ = require('jquery');
+
+var NumberWidget = React.createClass({displayName: "NumberWidget",
+    getDefaultProps: function () {
+        return {
+            pollInterval: 15000
+        };
+    },
+
+    getInitialState: function () {
+        return {count: 0}
+    },
+
+    loadCount: function () {
+        $.ajax({
+            url: this.props.url,
+            dataType: 'json',
+            success: function (data) {
+                this.setState({data: data});
+            }.bind(this),
+            error: function (xhr, status, err) {
+                console.error(this.props.url, status, err.toString());
+            }.bind(this)
+        });
+    },
+
+    componentDidMount: function () {
+        this.loadCount();
+        setInterval(this.loadItems, this.props.pollInterval);
+    },
+
+    render: function () {
+        var classes = "icon heading-icon " + this.props.widgetIcon;
+
+        return (
+            React.createElement("div", {className: "panel panel-default"}, 
+                React.createElement("div", {className: "panel-heading"}, 
+                    React.createElement("i", {className: classes}), 
+                    React.createElement("a", {href: ""}, this.props.title)
+                ), 
+                React.createElement("div", {className: "panel-body"}, 
+                    React.createElement("div", {className: "list-group"}, 
+                      React.createElement("span", {className: "widget-number"}, this.state.count)
+                    )
+                )
+            )
+        );
+    }
+});
+
+
+module.exports = NumberWidget;
+
+
+
+},{"jquery":2,"react":148}]},{},[149]);

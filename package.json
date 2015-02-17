@@ -3,6 +3,7 @@
     "node": ">= 0.10.0"
   },
   "devDependencies": {
+    "chart.js": "^1.0.1",
     "grunt": "~0.4.5",
     "grunt-bower": "~0.17",
     "grunt-browserify": "^3.3.0",
@@ -13,13 +14,13 @@
     "grunt-contrib-watch": "~0.6.1",
     "grunt-jest": "~0.1.2",
     "jest-cli": "~0.2.1",
+    "jquery": "~2.1.3",
+    "react": "~0.12.0",
+    "react-chartjs": "^0.4.0",
     "react-tools": "~0.12.0",
     "reactify": "^1.0.0"
   },
-  "dependencies": {
-    "react": "~0.12.0",
-    "jquery": "~2.1.3"
-  },
+  "dependencies": {},
   "jest": {
     "testDirectoryName": "test",
     "scriptPreprocessor": "<rootDir>/jestPreprocessor.js",
