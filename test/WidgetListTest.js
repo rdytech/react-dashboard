@@ -15,7 +15,17 @@ describe('WidgetList', function () {
             {tooltip: 'tip 2', href: 'link2'}
         ];
 
-        instance = TestUtils.renderIntoDocument(<WidgetList items={items}/>);
+        instance = TestUtils.renderIntoDocument(<WidgetList widgetIcon='yellow' url='http://something.example.com' items={items}/>);
+    });
+
+    it('fetches source data over ajax', function () {
+        var $ = require('jquery');
+        expect($.ajax).toBeCalledWith({
+            dataType: 'json',
+            error: jasmine.any(Function),
+            success: jasmine.any(Function),
+            url: 'http://something.example.com'
+        });
     });
 
 
