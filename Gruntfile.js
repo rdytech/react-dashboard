@@ -6,7 +6,7 @@ module.exports = function (grunt) {
         browserify: {
             all: {
                 src: ['src/Dashboard.js'],
-                dest: 'react-dashboard.js',
+                dest: './dist/react-dashboard.js',
                 options: {
                     transform: ['reactify'],
                     browserifyOptions: {
