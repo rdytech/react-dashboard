@@ -1,11 +1,13 @@
 React dashboard
 ==================
 
-Jobready dashboard implemented in React.
+A dashboard implemented in React.
 
+##
 
+Running tests
 
- node --harmony /usr/local/bin/grunt
+    node --harmony /usr/local/bin/grunt
 
 ## Installation
 
