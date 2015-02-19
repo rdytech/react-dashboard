@@ -10,9 +10,11 @@ var ListWidget = React.createClass({
             pollInterval: 15000
         };
     },
+
     getInitialState: function () {
         return {data: {items: []}};
     },
+
     loadItems: function () {
         $.ajax({
             url: this.props.url,
@@ -25,10 +27,12 @@ var ListWidget = React.createClass({
             }.bind(this)
         });
     },
+
     componentDidMount: function () {
         this.loadItems();
         setInterval(this.loadItems, this.props.pollInterval);
     },
+
     render: function () {
         var classes = "icon heading-icon " + this.props.widgetIcon;
         var listItems = this.state.data.items.map(function (item) {
@@ -53,6 +57,5 @@ var ListWidget = React.createClass({
         );
     }
 });
-
 
 module.exports = ListWidget;

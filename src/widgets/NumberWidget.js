@@ -49,6 +49,4 @@ var NumberWidget = React.createClass({
     }
 });
 
-
 module.exports = NumberWidget;
-
