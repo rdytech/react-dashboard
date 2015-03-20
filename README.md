@@ -3,12 +3,6 @@ React dashboard
 
 A dashboard implemented in React.
 
-##
-
-Running tests
-
-    node --harmony /usr/local/bin/grunt
-
 ## Installation
 
 - Install with Bower: `bower install react-dashboard`
@@ -19,13 +13,19 @@ JobReady.Dashboard.addWidget(e, title, collectionUrl, url, icon, pollInterval);
 ```
 
 # Packaging
-```
-node --harmony /usr/local/bin/grunt browserify
-```
 
-## Local Development
+  ```bash
+    gulp dist
+  ```
+
+# Local Development
 
 - Install Bower `npm install -g bower`
-- Install packages `npm install`
+- Install Gulp `npm install -g gulp`
+- Install Packages `npm install`
 
-To run tests, run `node --harmony /usr/local/bin/grunt`.
+## Running tests
+
+  ```bash
+      gulp jest
+  ```
