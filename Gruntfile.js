@@ -5,7 +5,7 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         browserify: {
             all: {
-                src: ['src/Dashboard.js'],
+                src: ['src/components/Dashboard.js'],
                 dest: './dist/react-dashboard.js',
                 options: {
                     transform: ['reactify'],

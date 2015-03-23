@@ -1,21 +1,20 @@
 var React = require('react');
-var ListWidgetItem = require('./ListWidgetItem');
-
-
 var $ = require('jquery');
+var WidgetSaveButton = require('./WidgetSaveButton');
 
-var ListWidget = React.createClass({
+var NumberWidget = React.createClass({
     getDefaultProps: function () {
         return {
-            pollInterval: 15000
+            pollInterval: 15000,
+            editMode: false
         };
     },
 
     getInitialState: function () {
-        return {data: {items: []}};
+        return {count: 0}
     },
 
-    loadItems: function () {
+    loadCount: function () {
         $.ajax({
             url: this.props.url,
             dataType: 'json',
@@ -29,28 +28,26 @@ var ListWidget = React.createClass({
     },
 
     componentDidMount: function () {
-        this.loadItems();
+        this.loadCount();
         setInterval(this.loadItems, this.props.pollInterval);
     },
 
     render: function () {
         var classes = "icon heading-icon " + this.props.widgetIcon;
-        var listItems = this.state.data.items.map(function (item) {
-            return (
-                <ListWidgetItem title={item.name} url={item.url} tooltip={item.tooltip}  />
-            );
-        });
-
+        var saveButton = null;
+        if (this.props.editMode === true) {
+            saveButton = <WidgetSaveButton widgetId={this.props.widgetId} enabled={this.props.enabled}/>;
+        }
         return (
             <div className="panel panel-default">
                 <div className="panel-heading">
                     <i className={classes}/>
-                    <a href="">{this.props.title}</a>
-                    <span className="badge pull-right bg-primary">{this.state.data.count}</span>
+                   {this.props.title}
+                          {saveButton}
                 </div>
                 <div className="panel-body">
                     <div className="list-group">
-                         {listItems}
+                        <span className="widget-number">{this.state.count}</span>
                     </div>
                 </div>
             </div>
@@ -58,4 +55,4 @@ var ListWidget = React.createClass({
     }
 });
 
-module.exports = ListWidget;
+module.exports = NumberWidget;

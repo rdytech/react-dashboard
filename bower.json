@@ -31,10 +31,11 @@
     "dist/react-dashboard.js"
   ],
   "dependencies": {
+    "react": "~0.13.1"
   },
   "devDependencies": {
     "jest": "~0.2.1",
-    "react": "~0.12.2",
+    "react": "~0.13.0",
     "jquery": "~2.1.3"
   }
 }
