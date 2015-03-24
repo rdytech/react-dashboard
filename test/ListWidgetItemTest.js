@@ -1,5 +1,3 @@
-/** @jsx React.DOM */
-
 jest.dontMock('../src/widgets/ListWidgetItem');
 
 var React = require('react/addons');
