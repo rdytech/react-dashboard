@@ -15,9 +15,9 @@ var buildDir = './dist';
 var exampleDir = './example';
 var testDir = './test';
 
-gulp.task('watch', function() {
-  gulp.watch(scriptsDir, ['build']);
-});
+//gulp.task('watch', function() {
+//  gulp.watch(scriptsDir, ['build']);
+//});
 
 gulp.task('build', function () {
   browserify({
@@ -39,7 +39,8 @@ gulp.task('compress', ['build'], function() {
 
 gulp.task('jest', function () {
     var nodeModules = path.resolve('./node_modules');
-    return gulp.src('**')
+    return gulp.src('test')
+
         .pipe(jest({
             scriptPreprocessor: nodeModules + '/babel-jest',
             testPathIgnorePatterns: [
@@ -59,5 +60,5 @@ gulp.task('jest', function () {
 });
 
 gulp.task('test', ['jest']);
-gulp.task('default',['watch']);
+gulp.task('default',['test']);
 gulp.task('dist', ['build', 'compress']);
