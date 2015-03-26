@@ -60,6 +60,3 @@ var Dashboard = React.createClass({
 
 module.exports = Dashboard;
 
-var JobReady = window.JobReady || {};
-JobReady.Dashboard = Dashboard;
-window.JobReady = JobReady;

@@ -1,2 +1,3 @@
-var JobReady = require('./Dashboard.js');
-window.JobReady = Jobready;
+var JobReady = window.JobReady || {};
+JobReady.Dashboard = require('./components/Dashboard.js');
+window.JobReady = JobReady;

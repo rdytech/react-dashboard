@@ -15,14 +15,14 @@ var buildDir = './dist';
 var exampleDir = './example';
 var testDir = './test';
 
-//gulp.task('watch', function() {
-//  gulp.watch(scriptsDir, ['build']);
-//});
+gulp.task('watch', function() {
+  gulp.watch(scriptsDir, ['build']);
+});
 
 gulp.task('build', function () {
   browserify({
     entries: './src/react-dashboard.js',
-    extensions: ['.js'],
+    extensions: ['.js']
   })
   .transform(babelify)
   .bundle()
@@ -39,8 +39,7 @@ gulp.task('compress', ['build'], function() {
 
 gulp.task('jest', function () {
     var nodeModules = path.resolve('./node_modules');
-    return gulp.src('test')
-
+    return gulp.src('**')
         .pipe(jest({
             scriptPreprocessor: nodeModules + '/babel-jest',
             testPathIgnorePatterns: [
@@ -53,7 +52,6 @@ gulp.task('jest', function () {
                 "json",
                 "react"
             ],
-            //rootDir: "src",
             testDirectoryName: "test",
             unmockedModulePathPatterns: [nodeModules + '/react']
         }));

@@ -16,13 +16,14 @@ var WidgetSaveButton = React.createClass({
         DashboardActions.toggleWidget(this.props.widgetId, this.state.saved);
     },
     render: function () {
-        var buttonClasses = classnames('btn', 'btn-small', {
+        var buttonClasses = classnames('btn', 'btn-sm', {
                     'btn-green': this.state.saved,
                     'btn-default': !this.state.saved
             }
         );
+        var divStyle = {marginLeft: 5};
         return (
-            <button className={buttonClasses} onClick={this.handleClick} >
+            <button className={buttonClasses} onClick={this.handleClick}  style={divStyle}>
                 <span className="icon icon-tick"></span>
             </button>
         );

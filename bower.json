@@ -28,7 +28,8 @@
     "tests"
   ],
   "main": [
-    "dist/react-dashboard.js"
+    "dist/react-dashboard.js",
+    "dist/react-dashboard.min.js"
   ],
   "dependencies": {
     "react": "~0.13.1"
