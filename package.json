@@ -1,33 +1,65 @@
 {
-  "engines": {
-    "node": ">= 0.10.0"
+  "name": "react-dashboard",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/react-dashboard.js",
+  "dependencies": {
+    "bootstrap": "^3.3.4",
+    "chart.js": "^1.0.2",
+    "jquery": "^2.1.3",
+    "react": "^0.13.1",
+    "react-bootstrap": "^0.17.0",
+    "react-chartjs": "^0.5.0"
   },
   "devDependencies": {
-    "chart.js": "^1.0.1",
+    "babel-jest": "^4.0.0",
+    "babelify": "^5.0.4",
+    "browser-sync": "^2.3.0",
+    "browserify": "^9.0.3",
     "classnames": "^1.2.0",
+    "del": "^1.1.1",
+    "express": "^4.12.3",
     "flux": "^2.0.0",
-    "grunt": "~0.4.5",
-    "grunt-bower": "~0.17",
-    "grunt-browserify": "^3.3.0",
-    "grunt-contrib-concat": "~0.4.0",
-    "grunt-contrib-jshint": "~0.10.0",
-    "grunt-contrib-qunit": "~0.5.2",
-    "grunt-contrib-uglify": "~0.5.0",
-    "grunt-contrib-watch": "~0.6.1",
-    "grunt-jest": "^0.1.3",
-    "jest-cli": "~0.4.0",
-    "jquery": "~2.1.3",
-    "react": "~0.13.1",
-    "react-chartjs": "^0.4.0",
-    "react-tools": "~0.12.0",
-    "reactify": "^1.0.0"
+    "gulp": "^3.8.11",
+    "gulp-concat": "^2.5.2",
+    "gulp-debug": "^2.0.1",
+    "gulp-jest": "^0.4.0",
+    "gulp-jshint": "^1.9.4",
+    "gulp-less": "^3.0.1",
+    "gulp-minify-css": "^1.0.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-react": "^3.0.1",
+    "gulp-rename": "^1.2.0",
+    "gulp-run": "^1.6.6",
+    "gulp-streamify": "0.0.5",
+    "gulp-uglify": "^1.1.0",
+    "gulp-util": "^3.0.4",
+    "jest-cli": "^0.4.0",
+    "reactify": "^1.1.0",
+    "uglify-js": "^2.4.17",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^2.4.0"
   },
-  "dependencies": {},
-  "jest": {
-    "testDirectoryName": "test",
-    "scriptPreprocessor": "<rootDir>/jestPreprocessor.js",
-    "unmockedModulePathPatterns": [
-      "<rootDir>/node_modules/react"
-    ]
-  }
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "paths": {
+    "js": "./src/**/*.js",
+    "jsx": "./src/**/*.jsx"
+  },
+  "dest": {
+    "app": "react-dashboard.js",
+    "dist": "dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jobready/react-dashboard"
+  },
+  "author": "Andrew McNamara",
+  "license": "Apache",
+  "bugs": {
+    "url": "https://github.com/jobready/react-dashboard/issues"
+  },
+  "homepage": "https://github.com/jobready/react-dashboard"
 }
