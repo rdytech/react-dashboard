@@ -3,6 +3,10 @@ var NumberWidget = require('./NumberWidget');
 var PieChartWidget = require('./PieChartWidget');
 var React = require('react');
 
+var DashboardConfigurationStore = require('../stores/DashboardConfigurationStore');
+
+DashboardConfigurationStore.fetchInitial();
+
 var AvailableWidgetsMap = {
     "widgets-list": ListWidget,
     "pie-chart": PieChartWidget,

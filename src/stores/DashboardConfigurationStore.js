@@ -33,8 +33,6 @@ var DashboardConfigurationStore = {
     }
 };
 
-DashboardConfigurationStore.fetchInitial();
-
 DashboardConfigurationStore.dispatchToken = DashboardAppDispatcher.register(function (action) {
     switch (action.type) {
         case ActionTypes.WIDGET_TOGGLED:
