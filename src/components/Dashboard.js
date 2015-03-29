@@ -3,8 +3,6 @@ var NumberWidget = require('./NumberWidget');
 var PieChartWidget = require('./PieChartWidget');
 var React = require('react');
 
-var DashboardConfigurationStore = require('../stores/DashboardConfigurationStore');
-
 var AvailableWidgetsMap = {
     "widgets-list": ListWidget,
     "pie-chart": PieChartWidget,
@@ -18,16 +16,7 @@ var Dashboard = React.createClass({
         };
     },
     getInitialState: function () {
-        return {configuration: DashboardConfigurationStore.get()};
-    },
-    _onConfigurationChanged: function () {
-        this.setState({configuration: DashboardConfigurationStore.get()});
-    },
-    componentDidMount: function () {
-        DashboardConfigurationStore.addChangeListener(this._onConfigurationChanged);
-    },
-    componentWillUnmount: function () {
-        DashboardConfigurationStore.removeChangeListener(this.subscription);
+        return {configuration: this.props.configuration};
     },
     _buildRows: function () {
         if (this.state.configuration !== undefined && this.state.configuration.widgets !== undefined) {

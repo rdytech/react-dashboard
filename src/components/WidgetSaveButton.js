@@ -5,9 +5,10 @@ var DashboardActions = require('../actions/DashboardActions');
 var WidgetSaveButton = React.createClass({
     getDefaultProps: function () {
         return {
-            enabled: false
+            enabled: false,
         };
     },
+
     getInitialState: function () {
         return {saved: this.props.enabled};
     },
@@ -15,17 +16,18 @@ var WidgetSaveButton = React.createClass({
         this.setState({saved: !this.state.saved});
         DashboardActions.toggleWidget(this.props.widgetId, this.state.saved);
     },
+
     render: function () {
         var buttonClasses = classnames('btn', 'btn-sm', {
-                    'btn-green': this.state.saved,
-                    'btn-default': !this.state.saved
+                'btn-green': this.state.saved,
+                'btn-default': !this.state.saved
             }
         );
         var divStyle = {marginLeft: 5};
         return (
-            <button className={buttonClasses} onClick={this.handleClick}  style={divStyle}>
+            <a className={buttonClasses} onClick={this.handleClick}  style={divStyle}>
                 <span className="icon icon-tick"></span>
-            </button>
+            </a>
         );
     }
 });

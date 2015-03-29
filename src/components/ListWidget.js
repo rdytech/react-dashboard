@@ -29,10 +29,9 @@ var ListWidget = React.createClass({
             }.bind(this)
         });
     },
-
     componentDidMount: function () {
         this.loadItems();
-        setInterval(this.loadItems, this.props.pollInterval);
+        this.interval = setInterval(this.loadItems, this.props.pollInterval);
     },
 
     render: function () {

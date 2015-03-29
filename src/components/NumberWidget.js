@@ -29,9 +29,11 @@ var NumberWidget = React.createClass({
 
     componentDidMount: function () {
         this.loadCount();
-        setInterval(this.loadItems, this.props.pollInterval);
+       this.interval = setInterval(this.loadItems, this.props.pollInterval);
     },
-
+    componentWillUnmount: function() {
+        clearInterval(this.interval);
+    },
     render: function () {
         var classes = "icon heading-icon " + this.props.widgetIcon;
         var saveButton = null;
