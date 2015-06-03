@@ -29,13 +29,13 @@ var NumberWidget = React.createClass({
 
     componentDidMount: function () {
         this.loadCount();
-       this.interval = setInterval(this.loadItems, this.props.pollInterval);
+       this.interval = setInterval(this.loadCount, this.props.pollInterval);
     },
     componentWillUnmount: function() {
         clearInterval(this.interval);
     },
     render: function () {
-        var classes = "icon heading-icon " + this.props.widgetIcon;
+        var classes = "icon heading-icon " + this.props.icon;
         var saveButton = null;
         if (this.props.editMode === true) {
             saveButton = <WidgetSaveButton widgetId={this.props.widgetId} enabled={this.props.enabled}/>;
@@ -48,8 +48,8 @@ var NumberWidget = React.createClass({
                           {saveButton}
                 </div>
                 <div className="panel-body">
-                    <div className="list-group">
-                        <span className="widget-number">{this.state.count}</span>
+                    <div className="jumbotron">
+                        <h1>{this.state.count}</h1>
                     </div>
                 </div>
             </div>
