@@ -35503,13 +35503,13 @@ var NumberWidget = React.createClass({
 
     componentDidMount: function componentDidMount() {
         this.loadCount();
-        this.interval = setInterval(this.loadItems, this.props.pollInterval);
+        this.interval = setInterval(this.loadCount, this.props.pollInterval);
     },
     componentWillUnmount: function componentWillUnmount() {
         clearInterval(this.interval);
     },
     render: function render() {
-        var classes = "icon heading-icon " + this.props.widgetIcon;
+        var classes = "icon heading-icon " + this.props.icon;
         var saveButton = null;
         if (this.props.editMode === true) {
             saveButton = React.createElement(WidgetSaveButton, { widgetId: this.props.widgetId, enabled: this.props.enabled });
@@ -35529,10 +35529,10 @@ var NumberWidget = React.createClass({
                 { className: "panel-body" },
                 React.createElement(
                     "div",
-                    { className: "list-group" },
+                    { className: "jumbotron" },
                     React.createElement(
-                        "span",
-                        { className: "widget-number" },
+                        "h1",
+                        null,
                         this.state.count
                     )
                 )
