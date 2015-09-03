@@ -1,15 +1,14 @@
-/** @jsx React.DOM */
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 
-jest.dontMock('../src/widgets/ListWidget').dontMock('../src/widgets/ListWidgetItem');
+jest.dontMock('../../src/components/ListWidget').dontMock('../../src/components/ListWidgetItem');
 xdescribe('ListWidget', function () {
     var instance;
     var items;
     beforeEach(function () {
         // This component does not use any lifecycle methods or broadcast
         // events so it does not require rendering to the DOM to be tested.
-        var WidgetList = require('../src/WidgetList');
+        var WidgetList = require('../../src/components/WidgetList');
         items = [
             {tooltip: 'tip 1', href: 'link1'},
             {tooltip: 'tip 2', href: 'link2'}

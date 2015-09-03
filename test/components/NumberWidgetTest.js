@@ -1,8 +1,7 @@
-/** @jsx React.DOM */
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 
-jest.dontMock('../src/widgets/NumberWidget');
+jest.dontMock('../../src/components/NumberWidget');
 
 describe('NumberWidget', function () {
     var instance;
@@ -10,7 +9,7 @@ describe('NumberWidget', function () {
     beforeEach(function () {
         // This component does not use any lifecycle methods or broadcast
         // events so it does not require rendering to the DOM to be tested.
-        var NumberWidget = require('../src/widgets/NumberWidget');
+        var NumberWidget = require('../../src/components/NumberWidget');
         items = {count: 3};
 
         instance = TestUtils.renderIntoDocument(<NumberWidget widgetIcon='yellow' url='http://something.example.com' items={items}/>);

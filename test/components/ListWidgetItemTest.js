@@ -1,11 +1,9 @@
-/** @jsx React.DOM */
-
-jest.dontMock('../src/widgets/ListWidgetItem');
+jest.dontMock('../../src/components/ListWidgetItem');
 
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 
-var ListWidgetItem = require('../src/widgets/ListWidgetItem');
+var ListWidgetItem = require('../../src/components/ListWidgetItem');
 
 
 describe('ListWidgetItem', function () {
