@@ -47,11 +47,16 @@ var ListWidget = React.createClass({
             saveButton = <WidgetSaveButton widgetId={this.props.widgetId} enabled={this.props.enabled}/>;
         }
 
+        var title = this.props.title;
+        if (this.state.data.show_all_url != null) {
+            title = <a href={this.state.data.show_all_url}>{this.props.title}</a>
+        }
+
         return (
             <div className="panel panel-default">
                 <div className="panel-heading" onClick={this.handleClick} >
                     <i className={classes}/>
-                    {this.props.title}
+                    {title}
                     {saveButton}
                     <span className="badge pull-right bg-primary">{this.state.data.count}</span>
                 </div>
