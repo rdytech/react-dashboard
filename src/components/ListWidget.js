@@ -9,7 +9,9 @@ var ListWidget = React.createClass({
     getDefaultProps: function () {
         return {
             pollInterval: 15000,
-            editMode: false
+            editMode: false,
+            scrollable: false,
+            maxHeight: '226px'
         };
     },
 
@@ -33,7 +35,14 @@ var ListWidget = React.createClass({
         this.loadItems();
         this.interval = setInterval(this.loadItems, this.props.pollInterval);
     },
-
+    scrollableStyles: function() {
+      if (this.props.scrollable === true) {
+        return { overflowY: 'scroll', maxHeight: this.props.maxHeight };
+      }
+      else {
+        return {};
+      }
+    },
     render: function () {
         var classes = "icon heading-icon " + this.props.icon;
         var listItems = this.state.data.items.map(function (item) {
@@ -60,7 +69,7 @@ var ListWidget = React.createClass({
                     {saveButton}
                     <span className="badge pull-right bg-primary">{this.state.data.count}</span>
                 </div>
-                <div className="panel-body">
+                <div className="panel-body" style={this.scrollableStyles()}>
                     <div className="list-group">
                          {listItems}
                     </div>
