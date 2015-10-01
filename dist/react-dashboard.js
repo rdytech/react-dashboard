@@ -35412,7 +35412,9 @@ var Dashboard = React.createClass({
                     widgetId: widget.id,
                     icon: widget.icon,
                     editMode: this.props.editMode,
-                    enabled: widget.enabled
+                    enabled: widget.enabled,
+                    scrollable: widget.scrollable,
+                    maxHeight: widget.max_height
                 }));
             }, this);
         }
@@ -35443,7 +35445,9 @@ var ListWidget = React.createClass({
     getDefaultProps: function getDefaultProps() {
         return {
             pollInterval: 15000,
-            editMode: false
+            editMode: false,
+            scrollable: false,
+            maxHeight: "226px"
         };
     },
 
@@ -35467,7 +35471,13 @@ var ListWidget = React.createClass({
         this.loadItems();
         this.interval = setInterval(this.loadItems, this.props.pollInterval);
     },
-
+    scrollableStyles: function scrollableStyles() {
+        if (this.props.scrollable === true) {
+            return { overflowY: "scroll", maxHeight: this.props.maxHeight };
+        } else {
+            return {};
+        }
+    },
     render: function render() {
         var classes = "icon heading-icon " + this.props.icon;
         var listItems = this.state.data.items.map(function (item) {
@@ -35505,7 +35515,7 @@ var ListWidget = React.createClass({
             ),
             React.createElement(
                 "div",
-                { className: "panel-body" },
+                { className: "panel-body", style: this.scrollableStyles() },
                 React.createElement(
                     "div",
                     { className: "list-group" },
