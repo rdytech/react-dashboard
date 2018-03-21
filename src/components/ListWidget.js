@@ -8,7 +8,7 @@ var $ = require('jquery');
 var ListWidget = React.createClass({
     getDefaultProps: function () {
         return {
-            pollInterval: 15000,
+            pollInterval: 60000,
             editMode: false
         };
     },
