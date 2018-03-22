@@ -5,7 +5,7 @@ var WidgetSaveButton = require('./WidgetSaveButton');
 var NumberWidget = React.createClass({
     getDefaultProps: function () {
         return {
-            pollInterval: 60000,
+            pollInterval: 300000,
             editMode: false
         };
     },
