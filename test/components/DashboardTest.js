@@ -7,11 +7,6 @@ var ListWidget = require('../../src/components/ListWidget');
 var DashboardConfigurationStore = require('../../src/stores/DashboardConfigurationStore');
 
 describe('Dashboard', function () {
-    it('loads the configuration from the store', function () {
-        TestUtils.renderIntoDocument(<Dashboard />);
-        expect(DashboardConfigurationStore.get.mock.calls.length).toEqual(1);
-    });
-
     it('supports rendering list widgets', function () {
         var widgetConfiguration = {
             "widgets": [{
@@ -24,8 +19,7 @@ describe('Dashboard', function () {
                 "poll": 10000
             }]
         };
-        DashboardConfigurationStore.get.mockReturnValue(widgetConfiguration);
-        var dashboard = TestUtils.renderIntoDocument(<Dashboard />);
+        var dashboard = TestUtils.renderIntoDocument(<Dashboard editMode='false' configuration={widgetConfiguration} />);
 
         var widgets = TestUtils.scryRenderedComponentsWithType(dashboard, ListWidget);
         expect(widgets.length).toEqual(1);
@@ -43,8 +37,7 @@ describe('Dashboard', function () {
                 "poll": 10000
             }]
         };
-        DashboardConfigurationStore.get.mockReturnValue(widgetConfiguration);
-        var dashboard = TestUtils.renderIntoDocument(<Dashboard />);
+        var dashboard = TestUtils.renderIntoDocument(<Dashboard editMode='false' configuration={widgetConfiguration}/>);
 
         var widgets = TestUtils.scryRenderedComponentsWithType(dashboard, ListWidget);
         expect(widgets.length).toEqual(0);
@@ -63,8 +56,7 @@ describe('Dashboard', function () {
                     "poll": 10000
                 }]
             };
-            DashboardConfigurationStore.get.mockReturnValue(widgetConfiguration);
-            var dashboard = TestUtils.renderIntoDocument(<Dashboard editMode={true}/>);
+            var dashboard = TestUtils.renderIntoDocument(<Dashboard editMode={true} configuration={widgetConfiguration} />);
 
             var widgets = TestUtils.scryRenderedComponentsWithType(dashboard, ListWidget);
             expect(widgets.length).toEqual(1);

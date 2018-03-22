@@ -35,7 +35,9 @@ var Dashboard = React.createClass({
                             widgetId: widget.id,
                             icon: widget.icon,
                             editMode: this.props.editMode,
-                            enabled: widget.enabled
+                            enabled: widget.enabled,
+                            scrollable: widget.scrollable,
+                            maxHeight: widget.max_height
                         })
                     ));
             }, this);
