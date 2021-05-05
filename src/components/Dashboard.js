@@ -32,6 +32,7 @@ var Dashboard = React.createClass({
                         React.createElement(AvailableWidgetsMap[widget.component_type], {
                             title: widget.title,
                             url: widget.url,
+                            show_all_url: widget.show_all_url,
                             widgetId: widget.id,
                             icon: widget.icon,
                             editMode: this.props.editMode,
@@ -54,4 +55,3 @@ var Dashboard = React.createClass({
 });
 
 module.exports = Dashboard;
-

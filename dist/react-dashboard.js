@@ -955,25 +955,25 @@ window.JobReady = JobReady;
 			if (reflow){
 				this.reflow();
 			}
-			
+
 			if (this.options.animation && !reflow){
 				var animation = new Chart.Animation();
 				animation.numSteps = this.options.animationSteps;
 				animation.easing = this.options.animationEasing;
-				
+
 				// render function
 				animation.render = function(chartInstance, animationObject) {
 					var easingFunction = helpers.easingEffects[animationObject.easing];
 					var stepDecimal = animationObject.currentStep / animationObject.numSteps;
 					var easeDecimal = easingFunction(stepDecimal);
-					
+
 					chartInstance.draw(easeDecimal, stepDecimal, animationObject.currentStep);
 				};
-				
+
 				// user events
 				animation.onAnimationProgress = this.options.onAnimationProgress;
 				animation.onAnimationComplete = this.options.onAnimationComplete;
-				
+
 				Chart.animationService.addAnimation(this, animation);
 			}
 			else{
@@ -1396,11 +1396,11 @@ window.JobReady = JobReady;
 		numSteps: 60, // default number of steps
 		easing: "", // the easing to use for this animation
 		render: null, // render function used by the animation service
-		
-		onAnimationProgress: null, // user specified callback to fire on each step of the animation 
+
+		onAnimationProgress: null, // user specified callback to fire on each step of the animation
 		onAnimationComplete: null, // user specified callback to fire when the animation finishes
 	});
-	
+
 	Chart.Tooltip = Chart.Element.extend({
 		draw : function(){
 
@@ -2145,7 +2145,7 @@ window.JobReady = JobReady;
 					return;
 				}
 			}
-			
+
 			this.animations.push({
 				chartInstance: chartInstance,
 				animationObject: animationObject
@@ -2161,7 +2161,7 @@ window.JobReady = JobReady;
 			var index = helpers.findNextWhere(this.animations, function(animationWrapper) {
 				return animationWrapper.chartInstance === chartInstance;
 			});
-			
+
 			if (index)
 			{
 				this.animations.splice(index, 1);
@@ -2191,9 +2191,9 @@ window.JobReady = JobReady;
 				if(this.animations[i].animationObject.currentStep > this.animations[i].animationObject.numSteps){
 					this.animations[i].animationObject.currentStep = this.animations[i].animationObject.numSteps;
 				}
-				
+
 				this.animations[i].animationObject.render(this.animations[i].chartInstance, this.animations[i].animationObject);
-				
+
 				// Check if executed the last frame.
 				if (this.animations[i].animationObject.currentStep == this.animations[i].animationObject.numSteps){
 					// Call onAnimationComplete
@@ -2658,7 +2658,7 @@ window.JobReady = JobReady;
 			var index = atIndex !== undefined ? atIndex : this.segments.length;
 			if ( typeof(segment.color) === "undefined" ) {
 				segment.color = Chart.defaults.global.segmentColorDefault[index % Chart.defaults.global.segmentColorDefault.length];
-				segment.highlight = Chart.defaults.global.segmentHighlightColorDefaults[index % Chart.defaults.global.segmentHighlightColorDefaults.length];				
+				segment.highlight = Chart.defaults.global.segmentHighlightColorDefaults[index % Chart.defaults.global.segmentHighlightColorDefaults.length];
 			}
 			this.segments.splice(index, 0, new this.SegmentArc({
 				value : segment.value,
@@ -3338,7 +3338,7 @@ window.JobReady = JobReady;
 			helpers.each(this.segments,function(segment){
 				segment.save();
 			});
-			
+
 			this.reflow();
 			this.render();
 		},
@@ -4166,7 +4166,7 @@ module.exports.Dispatcher = require('./lib/Dispatcher');
  * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule Dispatcher
- * 
+ *
  * @preventMunge
  */
 
@@ -36273,6 +36273,7 @@ var Dashboard = React.createClass({
                 return React.createElement("div", { className: "col-md-6 col-sm-6 widget", key: widget.id }, React.createElement(AvailableWidgetsMap[widget.component_type], {
                     title: widget.title,
                     url: widget.url,
+										show_all_url: widget.show_all_url,
                     widgetId: widget.id,
                     icon: widget.icon,
                     editMode: this.props.editMode,
@@ -36354,11 +36355,11 @@ var ListWidget = React.createClass({
         }
 
         var title = this.props.title;
-        if (this.state.data.show_all_url != null) {
+        if (this.props.show_all_url != null) {
             title = React.createElement(
                 "a",
-                { href: this.state.data.show_all_url },
-                this.props.title
+                { href: this.props.show_all_url },
+                title
             );
         }
 
@@ -36374,7 +36375,7 @@ var ListWidget = React.createClass({
                 React.createElement(
                     "span",
                     { className: "badge pull-right bg-primary" },
-                    this.state.data.count
+                    this.state.data.items.length
                 )
             ),
             React.createElement(
