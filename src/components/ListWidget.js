@@ -57,8 +57,8 @@ var ListWidget = React.createClass({
         }
 
         var { title } = this.props;
-        if (this.props.show_all_url != null) {
-            title = <a href={this.props.show_all_url}>{title}</a>
+        if (this.props.showAllUrl != null) {
+            title = <a href={this.props.showAllUrl}>{title}</a>
         }
 
         return (

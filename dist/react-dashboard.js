@@ -36273,7 +36273,7 @@ var Dashboard = React.createClass({
                 return React.createElement("div", { className: "col-md-6 col-sm-6 widget", key: widget.id }, React.createElement(AvailableWidgetsMap[widget.component_type], {
                     title: widget.title,
                     url: widget.url,
-										show_all_url: widget.show_all_url,
+										showAllUrl: widget.show_all_url,
                     widgetId: widget.id,
                     icon: widget.icon,
                     editMode: this.props.editMode,
@@ -36355,10 +36355,10 @@ var ListWidget = React.createClass({
         }
 
         var title = this.props.title;
-        if (this.props.show_all_url != null) {
+        if (this.props.showAllUrl != null) {
             title = React.createElement(
                 "a",
-                { href: this.props.show_all_url },
+                { href: this.props.showAllUrl },
                 title
             );
         }
