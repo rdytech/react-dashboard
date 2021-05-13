@@ -56,9 +56,9 @@ var ListWidget = React.createClass({
             saveButton = <WidgetSaveButton widgetId={this.props.widgetId} enabled={this.props.enabled}/>;
         }
 
-        var title = this.props.title;
-        if (this.state.data.show_all_url != null) {
-            title = <a href={this.state.data.show_all_url}>{this.props.title}</a>
+        var { title } = this.props;
+        if (this.props.showAllUrl != null) {
+            title = <a href={this.props.showAllUrl}>{title}</a>
         }
 
         return (
@@ -67,7 +67,7 @@ var ListWidget = React.createClass({
                     <i className={classes}/>
                     {title}
                     {saveButton}
-                    <span className="badge pull-right bg-primary">{this.state.data.count}</span>
+                    <span className="badge pull-right bg-primary">{this.state.data.items.length}</span>
                 </div>
                 <div className="panel-body" style={this.scrollableStyles()}>
                     <div className="list-group">
