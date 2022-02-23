@@ -36346,7 +36346,7 @@ var ListWidget = React.createClass({
     render: function render() {
         var classes = "icon heading-icon " + this.props.icon;
         var listItems = this.state.data.items.map(function (item) {
-            return React.createElement(ListWidgetItem, { title: item.name, url: item.url, tooltip: item.tooltip, key: item.id });
+            return React.createElement(ListWidgetItem, { title: item.name, url: item.url, tooltip: item.tooltip, tags: item.tags, key: item.id });
         });
 
         var saveButton = null;
@@ -36401,6 +36401,17 @@ var React = require("react");
 var ListWidgetItem = React.createClass({
     displayName: "ListWidgetItem",
 
+    renderTags: function renderTags() {
+      return (this.props.tags || []).map(function(name) {
+        return React.createElement(
+          "span",
+          { key: Math.random(),
+            className: "badge badge-secondary" },
+          name
+        );
+      });
+    },
+
     render: function render() {
         return React.createElement(
             "a",
@@ -36409,7 +36420,8 @@ var ListWidgetItem = React.createClass({
                 "data-toggle": "tooltip",
                 "data-placement": "right",
                 title: this.props.tooltip },
-            this.props.title
+            this.props.title,
+            this.renderTags()
         );
     }
 });
