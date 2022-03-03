@@ -47,7 +47,7 @@ var ListWidget = React.createClass({
         var classes = "icon heading-icon " + this.props.icon;
         var listItems = this.state.data.items.map(function (item) {
             return (
-                <ListWidgetItem title={item.name} url={item.url} tooltip={item.tooltip} key={item.id} />
+                <ListWidgetItem title={item.name} url={item.url} tags={item.tags} tooltip={item.tooltip} key={item.id} />
             );
         });
 
