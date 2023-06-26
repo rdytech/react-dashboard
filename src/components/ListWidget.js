@@ -16,7 +16,7 @@ var ListWidget = React.createClass({
     },
 
     getInitialState: function () {
-        return {data: {items: []},  enabled: this.props.enabled};
+        return {data: {items: [], total: null},  enabled: this.props.enabled};
     },
 
     loadItems: function () {
@@ -61,13 +61,16 @@ var ListWidget = React.createClass({
             title = <a href={this.props.showAllUrl}>{title}</a>
         }
 
+        // if total is not null, then not all items are returned.
+        var total = this.state.data.total || this.state.data.items.length;
+
         return (
             <div className="panel panel-default">
                 <div className="panel-heading" onClick={this.handleClick} >
                     <i className={classes}/>
                     {title}
                     {saveButton}
-                    <span className="badge pull-right bg-primary">{this.state.data.items.length}</span>
+                    <span className="badge pull-right bg-primary">{total}</span>
                 </div>
                 <div className="panel-body" style={this.scrollableStyles()}>
                     <div className="list-group">

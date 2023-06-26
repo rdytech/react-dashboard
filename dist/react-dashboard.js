@@ -36363,6 +36363,8 @@ var ListWidget = React.createClass({
             );
         }
 
+        var total = this.state.data.total || this.state.data.items.length;
+
         return React.createElement(
             "div",
             { className: "panel panel-default" },
@@ -36375,7 +36377,7 @@ var ListWidget = React.createClass({
                 React.createElement(
                     "span",
                     { className: "badge pull-right bg-primary" },
-                    this.state.data.items.length
+                    total
                 )
             ),
             React.createElement(
